@@ -1,0 +1,125 @@
+/* Paleta de Cores e Variáveis do AD ASTRA */
+:root {
+  /* Cores Base */
+  --color-black: #0B0C10; /* Preto espacial */
+  --color-white: #FFFFFF;
+  --color-blue: #1F2833;  /* Azul escuro acinzentado */
+  --color-teal: #45A29E;  /* Teal suave */
+  --color-cyan: #66FCF1;  /* Ciano neon brilhante */
+
+  /* Aplicação do Tema Escuro (Padrão atual) */
+  --bg-primary: var(--color-black);
+  --bg-secondary: var(--color-blue);
+  --text-primary: var(--color-white);
+  --text-secondary: var(--color-teal);
+  --accent-color: var(--color-cyan);
+}
+
+/* Reset básico para remover margens indesejadas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Configuração do corpo do aplicativo */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Remove barras de rolagem nativas */
+  user-select: none; /* Impede que o usuário selecione textos acidentalmente como num site */
+}
+
+/* Container principal do React */
+#root {
+  display: flex;
+  flex-direction: column; /* Prepara para ter o conteúdo em cima e o Player em baixo */
+  width: 100%;
+  height: 100%;
+}
+
+/* Animação das Estrelas */
+.star-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #02060a; /* Fundo bem escuro */
+  z-index: -1;
+}
+
+.stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 400px 200px #FFF, 800px 400px #FFF, 1200px 600px #FFF, 200px 800px #FFF, 1600px 100px #FFF, 500px 900px #FFF, 1000px 300px #FFF;
+  animation: moveStars 150s linear infinite;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+@keyframes pulse {
+  from { opacity: 0.1; transform: scale(1); }
+  to { opacity: 0.2; transform: scale(1.1); }
+}
+
+.space-background {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 120%, #1a0b2e 0%, #000000 70%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+.sun-glow {
+  position: absolute;
+  bottom: -20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, rgba(255, 69, 0, 0.05) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: pulseSun 10s infinite alternate;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle var(--duration) infinite ease-in-out alternate;
+}
+
+@keyframes pulseSun {
+  0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+.custom-scroll::-webkit-scrollbar { 
+  width: 8px !important; 
+  height: 8px !important; 
+}
+.custom-scroll::-webkit-scrollbar-track { 
+  background: rgba(0, 0, 0, 0.2) !important; 
+  border-radius: 10px !important; 
+}
+.custom-scroll::-webkit-scrollbar-thumb { 
+  background: rgba(251, 146, 60, 0.4) !important; 
+  border-radius: 10px !important; 
+  border: 1px solid rgba(0,0,0,0.5) !important; 
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover { 
+  background: rgba(251, 146, 60, 0.8) !important; 
+}
